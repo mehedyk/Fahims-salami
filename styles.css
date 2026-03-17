@@ -1,0 +1,250 @@
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center;
+  font-family: 'DM Sans', 'Noto Sans Bengali', sans-serif;
+  overflow-x: hidden;
+  transition: background 0.5s, color 0.5s;
+}
+canvas#bg {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+
+/* ── TOPBAR ── */
+.bar {
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px; z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.bar-right { display: flex; gap: 8px; }
+.pill {
+  border: 1px solid; border-radius: 999px;
+  padding: 6px 14px; font-size: 12px; font-weight: 500;
+  background: transparent; cursor: pointer;
+  letter-spacing: 0.04em; transition: opacity 0.2s, background 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.pill:hover { opacity: 0.7; }
+
+/* ── CARD ── */
+.card {
+  position: relative; z-index: 10;
+  width: min(480px, 94vw);
+  margin: 90px auto 48px;
+  padding: 40px 36px 36px;
+  border-radius: 3px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+}
+
+/* ── ORNAMENT ── */
+.ornament-line {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; margin-bottom: 20px;
+}
+.orn { font-size: 10px; flex-shrink: 0; }
+.orn-line { flex: 1; height: 1px; }
+
+/* ── TYPOGRAPHY ── */
+.eid-label {
+  font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+  font-weight: 500; margin-bottom: 10px; font-family: 'DM Sans', sans-serif;
+}
+.eid-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 8vw, 3.6rem);
+  font-weight: 900; line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+.eid-dua {
+  font-size: 13px; font-style: italic; letter-spacing: 0.04em;
+  margin-bottom: 20px; opacity: 0.7;
+  font-family: 'DM Sans', 'Noto Sans Bengali', sans-serif;
+}
+.divider {
+  width: 100%; text-align: center;
+  font-size: 10px; margin: 16px 0; opacity: 0.4;
+}
+
+/* ── MAIN COPY ── */
+.ask {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  font-weight: 700; font-style: italic;
+  line-height: 1.5; margin-bottom: 8px;
+}
+.ask-sub {
+  font-size: 12.5px; line-height: 1.6;
+  opacity: 0.65; margin-bottom: 24px;
+  font-family: 'DM Sans', 'Noto Sans Bengali', sans-serif;
+}
+
+/* ── BUTTONS ── */
+.btn-row {
+  display: flex; gap: 12px; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 14px; position: relative;
+}
+.btn {
+  padding: 13px 28px; border-radius: 2px;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; letter-spacing: 0.03em;
+  border: 1px solid; transition: transform 0.15s, opacity 0.15s;
+  min-width: 140px;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn.floating {
+  position: fixed; z-index: 999; transition: left 0.22s cubic-bezier(.4,1.6,.6,1), top 0.22s cubic-bezier(.4,1.6,.6,1);
+}
+
+/* ── NUDGE ── */
+.nudge {
+  font-size: 13px; min-height: 20px; margin-bottom: 20px;
+  opacity: 0.75; font-style: italic;
+  font-family: 'DM Sans', 'Noto Sans Bengali', sans-serif;
+}
+
+/* ── INFO (bKash) ── */
+#info { display: none; text-align: center; width: 100%; margin: 10px 0 4px; }
+#info.show { display: block; animation: fadeUp 0.5s ease both; }
+.info-tag {
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 8px;
+}
+.bkash-no {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem; font-weight: 700; letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+.copy-btn {
+  border: 1px solid; border-radius: 2px;
+  padding: 8px 22px; font-size: 12px; font-weight: 500;
+  background: transparent; cursor: pointer; letter-spacing: 0.06em;
+  font-family: 'DM Sans', sans-serif; margin-bottom: 14px;
+  transition: opacity 0.2s;
+}
+.copy-btn:hover { opacity: 0.7; }
+.dua-text { font-size: 13px; font-style: italic; opacity: 0.7; line-height: 1.6; }
+
+/* ── EID CARD ── */
+#cardWrap { display: none; width: 100%; text-align: center; }
+#cardWrap.show { display: block; animation: fadeUp 0.5s ease both; }
+#ec { width: 100%; max-width: 520px; height: auto; border-radius: 2px; margin: 8px 0; }
+.card-lbl { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.5; margin-bottom: 8px; }
+.dl-btn {
+  border: 1px solid; border-radius: 2px;
+  padding: 8px 20px; font-size: 12px; font-weight: 500;
+  background: transparent; cursor: pointer; letter-spacing: 0.06em;
+  font-family: 'DM Sans', sans-serif; margin-top: 6px; transition: opacity 0.2s;
+}
+.dl-btn:hover { opacity: 0.7; }
+#genWrap { margin-top: 8px; }
+.gen-btn {
+  border: 1px solid; border-radius: 2px;
+  padding: 10px 24px; font-size: 13px; font-weight: 500;
+  background: transparent; cursor: pointer; letter-spacing: 0.05em;
+  font-family: 'DM Sans', sans-serif; transition: opacity 0.2s;
+}
+.gen-btn:hover { opacity: 0.7; }
+
+/* ── CONFETTI ── */
+.cp {
+  position: fixed; top: -20px; pointer-events: none;
+  animation: fall linear forwards; z-index: 9999;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 10;
+  font-size: 11px; padding: 0 0 24px; text-align: center;
+  font-family: 'DM Sans', sans-serif; letter-spacing: 0.05em;
+}
+.author { font-weight: 600; text-decoration: none; }
+.author:hover { text-decoration: underline; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ════════════════════════════════════
+   THEMES
+   ════════════════════════════════════ */
+
+/* ── EMBER (dark crimson) ── */
+body.ember {
+  color: #f0e2cc;
+  background: #140608;
+}
+body.ember .bar { background: rgba(20,6,8,0.7); border-bottom: 1px solid rgba(180,50,30,0.15); }
+body.ember .pill { color: #c8624a; border-color: rgba(200,98,74,0.35); }
+body.ember .pill:hover { background: rgba(200,98,74,0.08); }
+body.ember .card {
+  background: rgba(26,10,10,0.85);
+  border: 1px solid rgba(180,50,30,0.2);
+  box-shadow: 0 8px 60px rgba(180,30,10,0.15), 0 2px 12px rgba(0,0,0,0.5);
+}
+body.ember .ornament-line .orn { color: rgba(200,98,74,0.6); }
+body.ember .orn-line { background: rgba(200,98,74,0.2); }
+body.ember .eid-label { color: #a84830; }
+body.ember .eid-title { color: #e8c8a0; text-shadow: 0 0 40px rgba(200,98,74,0.3); }
+body.ember .eid-dua { color: #b08060; }
+body.ember .divider { color: #a84830; }
+body.ember .ask { color: #f0e2cc; }
+body.ember .ask-sub { color: #b09070; }
+body.ember .btn.yes { background: rgba(200,98,74,0.15); border-color: #c8624a; color: #f0c8a0; }
+body.ember .btn.yes:hover { background: rgba(200,98,74,0.25); }
+body.ember .btn.no { border-color: rgba(180,60,40,0.35); color: #906050; }
+body.ember .nudge { color: #a06040; }
+body.ember .info-tag { color: #c8624a; }
+body.ember .bkash-no { color: #e8c8a0; }
+body.ember .copy-btn { color: #c8624a; border-color: rgba(200,98,74,0.35); }
+body.ember .dua-text { color: #a08060; }
+body.ember .card-lbl { color: #a06040; }
+body.ember .dl-btn { color: #c8624a; border-color: rgba(200,98,74,0.35); }
+body.ember .gen-btn { color: #c8624a; border-color: rgba(200,98,74,0.35); }
+body.ember footer .plain { color: #605040; }
+body.ember .author { color: #a86040; }
+
+/* ── STEEL (cold blue-grey) ── */
+body.steel {
+  color: #d8e0ec;
+  background: #060c14;
+}
+body.steel .bar { background: rgba(6,12,20,0.7); border-bottom: 1px solid rgba(80,120,180,0.12); }
+body.steel .pill { color: #6090c8; border-color: rgba(96,144,200,0.35); }
+body.steel .pill:hover { background: rgba(96,144,200,0.08); }
+body.steel .card {
+  background: rgba(10,18,30,0.88);
+  border: 1px solid rgba(80,120,180,0.18);
+  box-shadow: 0 8px 60px rgba(30,60,120,0.18), 0 2px 12px rgba(0,0,0,0.6);
+}
+body.steel .ornament-line .orn { color: rgba(96,144,200,0.5); }
+body.steel .orn-line { background: rgba(96,144,200,0.18); }
+body.steel .eid-label { color: #4878b0; }
+body.steel .eid-title { color: #c8d8f0; text-shadow: 0 0 40px rgba(80,120,200,0.3); }
+body.steel .eid-dua { color: #7090b8; }
+body.steel .divider { color: #4070a8; }
+body.steel .ask { color: #d8e0ec; }
+body.steel .ask-sub { color: #7090b0; }
+body.steel .btn.yes { background: rgba(96,144,200,0.12); border-color: #6090c8; color: #a8c8f0; }
+body.steel .btn.yes:hover { background: rgba(96,144,200,0.22); }
+body.steel .btn.no { border-color: rgba(80,120,180,0.3); color: #506888; }
+body.steel .nudge { color: #607090; }
+body.steel .info-tag { color: #6090c8; }
+body.steel .bkash-no { color: #c8d8f0; }
+body.steel .copy-btn { color: #6090c8; border-color: rgba(96,144,200,0.35); }
+body.steel .dua-text { color: #6080a0; }
+body.steel .card-lbl { color: #5070a0; }
+body.steel .dl-btn { color: #6090c8; border-color: rgba(96,144,200,0.35); }
+body.steel .gen-btn { color: #6090c8; border-color: rgba(96,144,200,0.35); }
+body.steel footer .plain { color: #405060; }
+body.steel .author { color: #5080b0; }

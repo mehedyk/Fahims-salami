@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Fahim-ke Salami Diben?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="ember">
+
+<canvas id="bg"></canvas>
+
+<!-- TOPBAR -->
+<nav class="bar">
+  <button class="pill" id="tpBtn" onclick="cycleTheme()">
+    <span id="tpLbl">🔥 Ember</span>
+  </button>
+  <div class="bar-right">
+    <button class="pill" id="lgBtn" onclick="toggleL()">EN</button>
+  </div>
+</nav>
+
+<!-- CARD -->
+<main class="card">
+
+  <div class="ornament-line">
+    <span class="orn">✦</span>
+    <span class="orn-line"></span>
+    <span class="orn">✦</span>
+  </div>
+
+  <p class="eid-label" id="lbl">Eid ul Fitr</p>
+  <h1 class="eid-title" id="ttl">Eid Mubarak</h1>
+  <p class="eid-dua" id="dua">তাকাব্বালাল্লাহু মিন্না ওয়া মিনকুম</p>
+
+  <div class="divider"><span>◆</span></div>
+
+  <p class="ask" id="ask">Ei Eid-e, Fahim-ke ki ektu salami deben? 🥺</p>
+  <p class="ask-sub" id="asub">Emon manush khai nei jey Fahim-er jonno kichhu korte raaji na...</p>
+
+  <div class="btn-row">
+    <button class="btn yes" id="yesBtn" onclick="onYes()">✓&nbsp;Dibo, in sha Allah</button>
+    <button class="btn no" id="noBtn" ontouchstart="flee(event)" onmouseover="flee(event)" onclick="flee(event)">✕&nbsp;Na, dibo na</button>
+  </div>
+  <p class="nudge" id="nudge">Eita ki thik hobe? 😔</p>
+
+  <!-- bKash -->
+  <div id="info">
+    <p class="info-tag" id="infoTag">bKash</p>
+    <p class="bkash-no">01810-343064</p>
+    <button class="copy-btn" id="cpBtn" onclick="doCopy()">Copy Number</button>
+    <p class="dua-text" id="duaTxt">JazakAllahu Khayran 🤲 — may this Eid bring you immeasurable joy. Ameen.</p>
+  </div>
+
+  <div class="divider" id="sep2"><span>◆</span></div>
+
+  <!-- Eid Card -->
+  <div id="cardWrap">
+    <p class="card-lbl" id="clbl">Eid Card</p>
+    <canvas id="ec" width="520" height="300"></canvas><br>
+    <button class="dl-btn" id="dlBtn" onclick="dlCard()">↓ Download</button>
+  </div>
+  <div id="genWrap">
+    <button class="gen-btn" id="genBtn" onclick="makeCard()">Generate Eid Card</button>
+  </div>
+
+</main>
+
+<footer>
+  <span class="plain">A </span><a class="author" href="https://github.com/mehedyk" target="_blank" rel="noopener">mehedyk</a><span class="plain"> production &nbsp;·&nbsp; <span id="yr"></span></span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
