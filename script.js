@@ -9,7 +9,7 @@ const TX = {
     ttl: 'Eid Mubarak',
     dua: 'তাকাব্বালাল্লাহু মিন্না ওয়া মিনকুম',
     ask: 'Ei Eid-e, Fahim-ke ki ektu salami deben? 🥺',
-    asub: 'Emon manush khai nei jey Fahim-er jonno kichhu korte raaji na...',
+    asub: 'Emon manush nai je Fahim-er jonno kichhu korte raaji na...',
     nudge: 'Eita ki thik hobe? Bhaben ektu... 😔',
     yes: '✓&nbsp;Dibo, in sha Allah',
     no:  '✕&nbsp;Na, dibo na',
@@ -22,7 +22,7 @@ const TX = {
     gen: 'Generate Eid Card',
     lgBtn: 'EN',
     noMsgs: [
-      'Seriously? Fahim-er sathe eita? 😤',
+      'Seriously? Fahim-er sathe ei panga? 😤',
       'Bhai, ekta dua-o dite parben na? 😢',
       'Ei Eid-e o na? Maan gelo... 💔',
       'Ei moment ta mone thakbe, bhai 😶',
